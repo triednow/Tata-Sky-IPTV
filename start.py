@@ -1,5 +1,6 @@
 async def main():
   await app.start()
+  logging.info("bot started")
   await idle()
   await app.stop()
 
