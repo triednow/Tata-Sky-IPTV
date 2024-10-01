@@ -8,6 +8,7 @@ def start(client,message):
 async def main():
   await app.start()
   logging.info("bot started")
+  app.add_handler(MessageHandler(start, filters=command('start')))
   await idle()
   await app.stop()
 
