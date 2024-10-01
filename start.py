@@ -1,3 +1,7 @@
+def start(client,message):
+  
+
+
 async def main():
   await app.start()
   logging.info("bot started")
