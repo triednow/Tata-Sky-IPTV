@@ -1,6 +1,6 @@
 def main():
   app.start()
-  app.idle()
+  idle()
   app.stop()
 
 if 2<3:
