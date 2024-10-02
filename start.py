@@ -20,7 +20,14 @@ async def start(client,message):
   reply_markup = buttons.build_menu(2)
   msg = "Select How To Login To Tataplay"
   return await sendMessage(message, msg, reply_markup)
-
+async def sendMessage(message, text, buttons=None, photo=None, **kwargs):
+    try:
+        return await message.reply(text=text, quote=True, disable_web_page_preview=True, disable_notification=True,
+                                    reply_markup=buttons, reply_to_message_id=rply.id if (rply := message.reply_to_message) and not rply.text and not rply.caption else None,
+                                    **kwargs)
+    except Exception as e:
+     #   LOGGER.error(format_exc())
+        return str(e)
 def password(_, query):
   m = query.message
   get_id = app.ask(
