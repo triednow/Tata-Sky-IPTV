@@ -34,7 +34,7 @@ def password(_, query):
         chat_id=m.chat.id,
         text="Enter Subscriber Id or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
     )
-  api_id = get_id.text
+  api_id = get_id
   if is_cancel(query.message, api_id):
       return
 
@@ -44,7 +44,7 @@ def password(_, query):
         chat_id=m.chat.id,
         text="Enter Phone Number Without +91 or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
     )
-  phnum = get_id.text
+  phnum = get_id
   if is_cancel(query.message, phnum):
       return
 
@@ -68,7 +68,7 @@ def otp(_, query):
         chat_id=m.chat.id,
         text="Enter Subscriber Id or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
     )
-  api_id = get_id.text
+  api_id = get_id
   if is_cancel(query.message, api_id):
       return
 
@@ -78,7 +78,7 @@ def otp(_, query):
         chat_id=m.chat.id,
         text="Enter Phone Number Without +91 or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
     )
-  phnum = get_id.text
+  phnum = get_id
   if is_cancel(query.message, phnum):
       return
 
