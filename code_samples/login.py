@@ -9,7 +9,7 @@ fallback_rmn = ""
 user = {}
 
 
-def generateOTP(sid, rmn):
+def generateOTP(message,sid, rmn):
     print("Generating OTP.......")
     print("\n \n \n")
     otp_with_rmn_url = API_BASE_URL + "rest-api/pub/api/v1/rmn/" + rmn + "/otp"
@@ -17,16 +17,17 @@ def generateOTP(sid, rmn):
     if x.status_code == 200:
         msg = x.json()['message']
         if msg == 'OTP generated successfully.':
-            print("OTP Generated successfully")
+            message.reply_text("OTP Generated successfully")
         else:
             print(msg)
 
     else:
-        print("Failed to generate OTP")
+        message.reply_text("Failed to generate OTP")
+        
         return False
 
 
-def loginWithPass(sid, rmn, pwd):
+def loginWithPass(message,sid, rmn, pwd):
     payload = getPayload(auth=pwd, sid=sid, loginOpt="PWD", rmn=rmn)
     headers = getHeaders()
     x = requests.request("POST", url, headers=headers, data=json.dumps(payload))
@@ -34,7 +35,7 @@ def loginWithPass(sid, rmn, pwd):
         responseMessage = x.json()['message']
         responseData = x.json()['data']
         if responseMessage == "Logged in successfully.":
-            print(responseMessage)
+            message.reply_text(responseMessage)
             print("\n")
             print("**********************************************")
             print("Saving user details to userDetails.json so that you don't have to login again")
@@ -52,7 +53,7 @@ def loginWithPass(sid, rmn, pwd):
         else:
             print(responseMessage)
     else:
-        print("Failed to login ")
+        message.reply_text("Failed to login ")
 
 
 def loginWithOTP(sid, rmn, otp):
@@ -64,7 +65,7 @@ def loginWithOTP(sid, rmn, otp):
         responseData = x.json()['data']
         if responseMessage == "Logged in successfully.":
             print("**********************************************")
-            print(responseMessage)
+            message.reply_text(responseMessage)
             print("\n")
             print("**********************************************")
             print("Saving user details to userDetails.json so that you don't have to login again")
@@ -82,7 +83,7 @@ def loginWithOTP(sid, rmn, otp):
         else:
             print(responseMessage)
     else:
-        print("Failed to login ")
+        message.reply_text("Failed to login ")
 
 
 def getPayload(auth, sid, loginOpt, rmn):
