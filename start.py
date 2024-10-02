@@ -31,6 +31,17 @@ def password(_, query):
 
   get_id.delete()
   get_id.request.delete()
+  get_id = app.ask(
+        chat_id=m.chat.id,
+        text="Enter Password or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
+    )
+  passwd = get_id.text
+  if is_cancel(query.message, passwd):
+      return
+
+  get_id.delete()
+  get_id.request.delete()
+  login.loginWithPass(sid=api_id, rmn=phnum, pwd=passwd)
 
 def otp(_, query):
   m = query.message
@@ -54,6 +65,7 @@ def otp(_, query):
 
   get_id.delete()
   get_id.request.delete()
+  login.generateOTP(sid=api_id, rmn=phnum)
 async def main():
   await app.start()
   logging.info("bot started")
