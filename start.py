@@ -9,8 +9,17 @@ async def start(client,message):
   msg = "Select How To Login To Tataplay"
   return await sendMessage(message, msg, reply_markup)
 
-def password (_, query):
-  
+def password(_, query):
+  get_id = app.ask(
+        chat_id=m.chat.id,
+        text="Enter Subscriber Id"#API_TEXT.format(m.from_user.mention(style='md')),
+    )
+    api_id = get_id.text
+    if is_cancel(query.message, api_id):
+        return
+
+    get_id.delete()
+    get_id.request.delete()
 async def main():
   await app.start()
   logging.info("bot started")
