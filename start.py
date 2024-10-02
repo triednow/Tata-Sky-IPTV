@@ -10,16 +10,50 @@ async def start(client,message):
   return await sendMessage(message, msg, reply_markup)
 
 def password(_, query):
+  m = query.message
   get_id = app.ask(
         chat_id=m.chat.id,
-        text="Enter Subscriber Id"#API_TEXT.format(m.from_user.mention(style='md')),
+        text="Enter Subscriber Id or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
     )
-    api_id = get_id.text
-    if is_cancel(query.message, api_id):
-        return
+  api_id = get_id.text
+  if is_cancel(query.message, api_id):
+      return
 
-    get_id.delete()
-    get_id.request.delete()
+  get_id.delete()
+  get_id.request.delete()
+  get_id = app.ask(
+        chat_id=m.chat.id,
+        text="Enter Phone Number Without +91 or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
+    )
+  phnum = get_id.text
+  if is_cancel(query.message, phnum):
+      return
+
+  get_id.delete()
+  get_id.request.delete()
+
+def otp(_, query):
+  m = query.message
+  get_id = app.ask(
+        chat_id=m.chat.id,
+        text="Enter Subscriber Id or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
+    )
+  api_id = get_id.text
+  if is_cancel(query.message, api_id):
+      return
+
+  get_id.delete()
+  get_id.request.delete()
+  get_id = app.ask(
+        chat_id=m.chat.id,
+        text="Enter Phone Number Without +91 or /cancel to Stop Process"#API_TEXT.format(m.from_user.mention(style='md')),
+    )
+  phnum = get_id.text
+  if is_cancel(query.message, phnum):
+      return
+
+  get_id.delete()
+  get_id.request.delete()
 async def main():
   await app.start()
   logging.info("bot started")
