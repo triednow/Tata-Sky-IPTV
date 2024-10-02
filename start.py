@@ -2,7 +2,9 @@ from pyrogram.handlers import MessageHandler, CallbackQueryHandler, EditedMessag
 from code_samples import bt
 def start(client,message):
   message.reply_text("Hello Welcome How are You✨ This Is A Tataplay Access Token Generator Made By @aryanchy451")
-  
+  buttons = ButtonMaker()
+  buttons.ibutton("LOGIN WITH PASSWORD",'PASS')
+  buttons.ibutton("LOGIN WITH OTP", 'OTP')
 
 
 async def main():
