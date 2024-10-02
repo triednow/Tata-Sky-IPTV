@@ -6,7 +6,8 @@ app = Client(
     "Aryansbot",
     bot_token="",
     api_id="",
-    api_hash=""
+    api_hash="",
+    sleep_threshold=30
 )
 async def start(client,message):
   await message.reply_text("Hello Welcome How are You✨ This Is A Tataplay Access Token Generator Made By @aryanchy451")
