@@ -90,6 +90,8 @@ async def main():
   await app.start()
   logging.info("bot started")
   app.add_handler(MessageHandler(start, filters=command('start')))
+  app.add_handler(CallbackQueryHandler(otp, filters=regex(r'^OTP')))
+  app.add_handler(CallbackQueryHandler(password, filters=regex(r'^PASS')))
   await idle()
   await app.stop()
 
