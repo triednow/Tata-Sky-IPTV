@@ -27,19 +27,19 @@ def generateOTP(message,sid, rmn):
         return False
 
 
-def loginWithPass(message,sid, rmn, pwd):
+async def loginWithPass(message,sid, rmn, pwd):
     payload = getPayload(auth=pwd, sid=sid, loginOpt="PWD", rmn=rmn)
     headers = getHeaders()
-    x = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+    x = await requests.request("POST", url, headers=headers, data=json.dumps(payload))
     if x.status_code == 200:
         responseMessage = x.json()['message']
         responseData = x.json()['data']
         if responseMessage == "Logged in successfully.":
-            message.reply_text(responseMessage)
+            await message.reply_text(responseMessage)
             print("\n")
             print("**********************************************")
             print("Saving user details to userDetails.json so that you don't have to login again")
-            message.reply_text(responseData['accessToken'])
+            await message.reply_text(responseData['accessToken'])
 
             user.update({
                 "accessToken": responseData['accessToken'],
@@ -54,22 +54,23 @@ def loginWithPass(message,sid, rmn, pwd):
         else:
             print(responseMessage)
     else:
-        message.reply_text("Failed to login ")
+        await message.reply_text("Failed to login ")
 
 
-def loginWithOTP(sid, rmn, otp):
+async def loginWithOTP(sid, rmn, otp):
     payload = getPayload(auth=otp, sid=sid, loginOpt="OTP", rmn=rmn)
     headers = getHeaders()
-    x = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+    x = await requests.request("POST", url, headers=headers, data=json.dumps(payload))
     if x.status_code == 200:
         responseMessage = x.json()['message']
         responseData = x.json()['data']
         if responseMessage == "Logged in successfully.":
             print("**********************************************")
-            message.reply_text(responseMessage)
+            await message.reply_text(responseMessage)
             print("\n")
             print("**********************************************")
             print("Saving user details to userDetails.json so that you don't have to login again")
+            await message.reply_text(responseData['accessToken'])
             user.update({
                 "accessToken": responseData['accessToken'],
                 "expiresIn": responseData['expiresIn'],
@@ -84,7 +85,7 @@ def loginWithOTP(sid, rmn, otp):
         else:
             print(responseMessage)
     else:
-        message.reply_text("Failed to login ")
+        await message.reply_text("Failed to login ")
 
 
 def getPayload(auth, sid, loginOpt, rmn):
