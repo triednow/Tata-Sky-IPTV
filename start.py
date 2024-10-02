@@ -5,8 +5,8 @@ from pyrogram import Client, enums, filters
 app = Client(
     "Aryansbot",
     bot_token="",
-    api_id="",
-    api_hash="",
+    api_id="5360874",
+    api_hash="4631f40a1b26c2759bf1be4aff1df710",
     sleep_threshold=30
 )
 async def start(client,message):
