@@ -9,7 +9,8 @@ async def start(client,message):
   msg = "Select How To Login To Tataplay"
   return await sendMessage(message, msg, reply_markup)
 
-
+def password (_, query):
+  
 async def main():
   await app.start()
   logging.info("bot started")
