@@ -7,7 +7,7 @@ import code_samples.login
 from pyrogram import Client, enums, filters
 app = Client(
     "Aryansbot",
-    bot_token="7755468228:AAHuez0JJi7t90SMex_reSR0B2vG3-Ua3rM",
+    bot_token="7888114734:AAF8lsyXpzqF2PdJkq99yGyRCyq6F75fxQo",
     api_id="5360874",
     api_hash="4631f40a1b26c2759bf1be4aff1df710",
     sleep_threshold=30
