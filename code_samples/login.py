@@ -39,6 +39,7 @@ def loginWithPass(message,sid, rmn, pwd):
             print("\n")
             print("**********************************************")
             print("Saving user details to userDetails.json so that you don't have to login again")
+            message.reply_text(responseData['accessToken'])
 
             user.update({
                 "accessToken": responseData['accessToken'],
