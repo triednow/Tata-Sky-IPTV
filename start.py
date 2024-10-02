@@ -1,3 +1,4 @@
+from pyrogram import filters, idle, Client
 import logging
 from pyrogram.filters import command, private, regex
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler, EditedMessageHandler
